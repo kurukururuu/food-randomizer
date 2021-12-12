@@ -1,0 +1,47 @@
+$slot-size: 250px;
+
+.slot {
+  @apply relative;
+  display: inline-block;
+  height: 100px;
+  width: $slot-size;
+}
+
+.slotWrapper {
+  @apply absolute border rounded-2xl overflow-hidden text-2xl h-16 bg-white;
+  line-height: 54px;
+  width: inherit;
+}
+
+.container {
+  @apply absolute top-1 w-full text-center;
+  transition: top ease-in-out 0.5s;
+  width: inherit;
+  height: 70px;
+}
+
+.roll {
+  @apply border rounded-lg shadow-lg cursor-pointer px-3 py-1;
+}
+
+.rolling {
+  animation: blinkingText 1.2s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: #000;
+  }
+  49% {
+    color: #000;
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: #000;
+  }
+}
