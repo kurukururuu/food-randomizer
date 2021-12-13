@@ -5,9 +5,15 @@ const INITIAL_LIST = {
   meta: {}
 }
 
+const INITIAL_FILTER = {
+  type: []
+}
+
 const INITIAL_STATE = {
   item: {},
   list: INITIAL_LIST,
+  types: INITIAL_LIST,
+  filter: INITIAL_FILTER,
   loading: true
 }
 
@@ -33,6 +39,12 @@ export const store = createSlice({
           break
       }
     },
+    setTypes:(state, action) => {
+      state.types.data = action.payload
+    },
+    setFilter:(state, action) => {
+      state.filter = action.payload
+    },
     resetList:(state) => {
       state.list = INITIAL_LIST
     },
@@ -43,6 +55,6 @@ export const store = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setItem, setList, resetList, setLoading } = store.actions
+export const { setItem, setList, setTypes, setFilter, resetList, setLoading } = store.actions
 
 export default store.reducer

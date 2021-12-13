@@ -8,7 +8,7 @@ $slot-size: 250px;
 }
 
 .slotWrapper {
-  @apply absolute border rounded-2xl overflow-hidden text-2xl h-16 bg-white;
+  @apply absolute border rounded-2xl overflow-hidden h-16 bg-white;
   line-height: 54px;
   width: inherit;
 }
@@ -21,7 +21,7 @@ $slot-size: 250px;
 }
 
 .roll {
-  @apply border rounded-lg shadow-lg cursor-pointer px-3 py-1;
+  @apply border rounded-lg shadow-lg px-3 py-1;
 }
 
 .rolling {
