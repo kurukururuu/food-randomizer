@@ -7,7 +7,7 @@ class slotMachine extends Component {
     super(props);
     this.state = { rolling: false, selectedFood: 0 };
 
-    // get ref of dic onn which elements will roll
+    // get ref of dic on which elements will roll
     this.slotRef = [createRef()];
   }
 
@@ -61,7 +61,6 @@ class slotMachine extends Component {
   
   componentDidMount() {
     const { watch } = this.props;
-
     watch('foods', (newValue) => {
       // New value assigned, you can use this to dispatch a user fetch action or
       // any other Redux action dispatch or function call.
@@ -91,13 +90,14 @@ class slotMachine extends Component {
 
         <button
           className={[
+            'text-white',
             styles.roll,
             this.state.rolling ? styles.rolling : '',
             this.foods.length === 0 ? 'cursor-not-allowed': 'cursor-pointer'].join(' ')}
           onClick={!this.state.rolling ? this.roll : undefined}
           disabled={this.state.rolling}
         >
-          {this.state.rolling ? "Rolling..." : "Roll for food"}
+          {this.state.rolling ? "Rolling..." : "Roll"}
         </button>
       </>
     )

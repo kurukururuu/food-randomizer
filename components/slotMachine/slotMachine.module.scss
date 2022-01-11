@@ -21,7 +21,7 @@ $slot-size: 250px;
 }
 
 .roll {
-  @apply border rounded-lg shadow-lg px-3 py-1;
+  @apply border rounded-full bg-indigo-700 w-28 shadow-lg px-3 py-2;
 }
 
 .rolling {
@@ -30,10 +30,10 @@ $slot-size: 250px;
 
 @keyframes blinkingText {
   0% {
-    color: #000;
+    color: white;
   }
   49% {
-    color: #000;
+    color: white;
   }
   60% {
     color: transparent;
@@ -42,6 +42,6 @@ $slot-size: 250px;
     color: transparent;
   }
   100% {
-    color: #000;
+    color: white;
   }
 }

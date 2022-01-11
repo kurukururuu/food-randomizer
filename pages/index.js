@@ -7,6 +7,7 @@ import config from "../assets/js/config";
 import { setList, setLoading, resetList, setTypes, setFilter } from '../store/food'
 import { useCallback, useEffect, useState } from "react";
 import useWatch from '../hooks/useWatch'
+import FoodCategories from "../components/Food/Categories/FoodCategories";
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -46,13 +47,14 @@ export default function Home() {
   }
 
   const handleSelectedType = useCallback((e) => {
-    const found = filter.type.findIndex(v => v === e.target.value)
+    // const found = filter.type.findIndex(v => v === e.target.value)
+    const found = filter.type.findIndex(v => v === e)
     const arr = [...filter.type]
     if (found !== -1) {
       arr.splice(found, 1)
       setSelectedType(arr)
     } else {
-      arr.push(e.target.value)
+      arr.push(e)
       setSelectedType(arr)
     }
     dispatch(setFilter({...filter, type: arr}))
@@ -61,7 +63,7 @@ export default function Home() {
   useWatch(() => {
     // Fetching logic...
     fetchList()
-  }, [ filter ])
+  }, [filter])
 
   // once only
   useEffect(() => {
@@ -73,18 +75,10 @@ export default function Home() {
     <LayoutFullHeight>
       <div className="container mx-auto flex-1 flex flex-col items-center justify-center">
         {/* <div className="text-3xl">Food O'mizer</div> */}
-        <div className="mb-6 flex justify-between max-w-xs">
-          {foodTypes.data.map((type,idx) => {
-            return (
-              <label key={idx} className={['flex items-center', idx > 0 ? 'ml-4' : ''].join(' ')}>
-                <input value={type} type="checkbox" className="mr-2" onChange={handleSelectedType} />
-                <span>{type}</span>
-              </label>
-            )
-          })}
-        </div>
+        <FoodCategories foodTypes={foodTypes} onFoodTypeChanged={handleSelectedType}></FoodCategories>
         <SlotMachine foods={foodList} />
       </div>
+      <div className="w-full px-16 py-2">Copyright 2021. All Rights Reserved</div>
     </LayoutFullHeight>
   )
 }
